@@ -5,7 +5,7 @@ date:   2017-09-17 12:58:27 -0400
 categories: strings
 ---
 
-```
+```python
 inpstr = "aabbccfffff"
 strlist = list(inpstr)
 
