@@ -5,7 +5,7 @@ date:   2017-09-17 12:58:27 -0400
 categories: strings
 ---
 
-{% highlight python %}
+```
 inpstr = "aabbccfffff"
 strlist = list(inpstr)
 
@@ -29,5 +29,4 @@ outStr = strlist[0:writeCtr]
 # printing the input and output
 print("Input string  : " + inpstr)
 print("Output string : " + "".join(outStr))
-from random import random
-{% endhighlight %}
+```
