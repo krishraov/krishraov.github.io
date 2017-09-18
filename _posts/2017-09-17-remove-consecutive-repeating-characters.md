@@ -29,4 +29,5 @@ outStr = strlist[0:writeCtr]
 # printing the input and output
 print("Input string  : " + inpstr)
 print("Output string : " + "".join(outStr))
+
 {% endhighlight %}
