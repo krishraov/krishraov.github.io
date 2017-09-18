@@ -6,6 +6,7 @@ categories: strings
 ---
 
 {% highlight python %}
+
 inpstr = "aabbccfffff"
 strlist = list(inpstr)
 
