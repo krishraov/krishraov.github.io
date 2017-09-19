@@ -14,7 +14,7 @@ inpString = "aabbccabc"
 outString = "abcabc"
 ```
 
-Solution: The solution is pretty easy to comp up with. All you have to do is (1) scan the string character by character, (2) check if a character is the same as the next character, (3) decide what to do if it equal or not to the next character. You can do this in O(n) without allocating any new space.  
+Solution: The solution is pretty easy. All you have to do is (1) scan the string character by character, (2) check if a character is the same as the next character, (3) decide what to do if it equal or not to the next character. You can do this in O(n) without allocating any new space.  
 
 ```python
 inpstr = "aabbccfffff"
