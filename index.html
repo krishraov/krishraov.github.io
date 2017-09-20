@@ -1,0 +1,21 @@
+---
+layout: default
+---
+
+<div class="posts">
+
+	{% for category in site.categories %}
+		<h3>{{ category | first }}</h3>
+		<ol>
+			{% for posts in category %}
+				{% for post in posts %}
+					{% if post.url %}
+						<li><a style="font-size:16px;" href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></li>
+					{% endif %}	
+				{% endfor %}
+			{% endfor %}
+		</ol>
+	{% endfor %}
+
+
+</div>

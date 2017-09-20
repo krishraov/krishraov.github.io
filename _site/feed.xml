@@ -1,39 +1,102 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.5.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2017-09-18T22:15:00-04:00</updated><id>http://localhost:4000/</id><title type="html">Coding Problems</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
-</subtitle><entry><title type="html">Remove consecutive repeating characters in a string</title><link href="http://localhost:4000/strings/2017/09/17/remove-consecutive-repeating-characters.html" rel="alternate" type="text/html" title="Remove consecutive repeating characters in a string" /><published>2017-09-17T12:58:27-04:00</published><updated>2017-09-17T12:58:27-04:00</updated><id>http://localhost:4000/strings/2017/09/17/remove-consecutive-repeating-characters</id><content type="html" xml:base="http://localhost:4000/strings/2017/09/17/remove-consecutive-repeating-characters.html">&lt;p&gt;Question : Let’s suppose that you are given an input string that might contain characters that are repeated. Can you design an algorithm that scans the input and removes any consecutively repeated characters and returns the trimmed string. It’s easier to describe this with an example :-&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;inpString = &quot;aabbcc&quot;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.5.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2017-09-20T08:09:49-04:00</updated><id>http://localhost:4000/</id><title type="html">Coding Problems</title><subtitle>Preparing for coding/programming interviews</subtitle><entry><title type="html">Remove repeated characters from a string</title><link href="http://localhost:4000/remove-repeated-characters-from-string/" rel="alternate" type="text/html" title="Remove repeated characters from a string" /><published>2017-09-19T04:00:00-04:00</published><updated>2017-09-19T04:00:00-04:00</updated><id>http://localhost:4000/remove-repeated-characters-from-string</id><content type="html" xml:base="http://localhost:4000/remove-repeated-characters-from-string/">Question : Let's suppose that you are given an input string that might contain characters that are repeated. Can you design an algorithm that scans the input and removes any repeated characters and returns the trimmed string. In this case, you don't have to worry whether the characters are repeated consecutively or not. Here is an example :-
+```
+inpString = &quot;my name is unique to me&quot;
+outString = &quot;my naeisuqto&quot; // this preserves the order
+outString = &quot;a eimonqsuty&quot; // this does not preserve the order
+```
+
+Solution: This can be solved in O(n) using a set to hold the unique characters. If we want to preserve the order, then we can simultaneously insert the unique characters into a list and present that as the output. Here are both versions. 
+
+```python
+# ----------------------
+# preserve the order
+# ----------------------
+inpString = &quot;my name is unique to me&quot;
+
+outputList = list()
+tempSet    = set()
+counter    = 0
+
+for ch in inpString:
+    
+    if ch not in tempSet:
+        tempSet.add(ch)
+        outputList.insert(counter, ch)
+        counter += 1
+    else:
+        continue
+
+print(&quot;Input string  : &quot; + inpString)
+print(&quot;Output string : &quot; + &quot;&quot;.join(outputList))
+```
+
+
+
+```python
+# ----------------------
+# don't preserve the order
+# ----------------------
+
+inpString = &quot;my name is unique to me&quot;
+
+tempSet = set()
+counter = 0
+
+for ch in inpString:
+    
+    if ch not in tempSet:
+        tempSet.add(ch)
+        counter += 1
+    else:
+        continue
+
+print(&quot;Input string  : &quot; + inpString)
+print(&quot;Output string : &quot; + &quot;&quot;.join(tempSet))
+```
+
+
+And here is a quick way to do this if we don't have to preserve the order. The idea is to create two sets populated with the input string and then find the intersection of these two sets. This will give us only the unique elements -- right?
+
+```
+inpString = &quot;my name is unique to me&quot;
+print(&quot;&quot;.join(set(inpString) &amp; set(inpString)))
+```
+
+Do let me know if you have a simpler solution!</content><author><name></name></author><category term="strings" /><summary type="html">Question : Let’s suppose that you are given an input string that might contain characters that are repeated. Can you design an algorithm that scans the input and removes any repeated characters and returns the trimmed string. In this case, you don’t have to worry whether the characters are repeated consecutively or not. Here is an example :- inpString = &quot;my name is unique to me&quot; outString = &quot;my naeisuqto&quot; // this preserves the order outString = &quot;a eimonqsuty&quot; // this does not preserve the order</summary></entry><entry><title type="html">Remove consecutive repeating characters in a string</title><link href="http://localhost:4000/remove-repeated-consecutive-characters/" rel="alternate" type="text/html" title="Remove consecutive repeating characters in a string" /><published>2017-09-17T12:58:27-04:00</published><updated>2017-09-17T12:58:27-04:00</updated><id>http://localhost:4000/remove-repeated-consecutive-characters</id><content type="html" xml:base="http://localhost:4000/remove-repeated-consecutive-characters/">Question : Let's suppose that you are given an input string that might contain characters that are repeated. Can you design an algorithm that scans the input and removes any consecutively repeated characters and returns the trimmed string. It's easier to describe this with an example :-
+```
+inpString = &quot;aabbcc&quot;
 outString = &quot;abc&quot;
 
 inpString = &quot;aabbccabc&quot;
 outString = &quot;abcabc&quot;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+```
 
-&lt;p&gt;Solution: The solution is pretty easy. All you have to do is (1) scan the string character by character, (2) check if a character is the same as the next character, (3) decide what to do if it equal or not to the next character. You can do this in O(n) without allocating any new space.&lt;/p&gt;
+Solution: The solution is pretty easy. All you have to do is (1) scan the string character by character, (2) check if a character is the same as the next character, (3) decide what to do if it equal or not to the next character. You can do this in O(n) without allocating any new space.  
 
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;inpstr&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;aabbccfffff&quot;&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;strlist&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;inpstr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+```python
+inpstr = &quot;aabbccfffff&quot;
+strlist = list(inpstr)
 
-&lt;span class=&quot;n&quot;&gt;length&lt;/span&gt;   &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;strlist&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;writeCtr&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
+length   = len(strlist)
+writeCtr = 0
 
-&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;index&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;index&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;strlist&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;writeCtr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;strlist&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;index&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;writeCtr&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;writeCtr&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;elif&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;strlist&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;index&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;strlist&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;index&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]:&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;continue&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;strlist&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;writeCtr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;strlist&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;index&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;writeCtr&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;writeCtr&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
-
-
-&lt;span class=&quot;n&quot;&gt;outStr&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;strlist&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;writeCtr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+for index in range(length-1):
+    if index == 0 :
+        strlist[writeCtr] = strlist[index]
+        writeCtr = writeCtr + 1
+    elif strlist[index] == strlist[index+1]:
+        continue
+    else:
+        strlist[writeCtr] = strlist[index + 1]
+        writeCtr = writeCtr + 1
 
 
-&lt;span class=&quot;c&quot;&gt;# printing the input and output&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Input string  : &quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;inpstr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Output string : &quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;join&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;outStr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+outStr = strlist[0:writeCtr]
 
-&lt;p&gt;Do let me know if you have a simpler solution!&lt;/p&gt;</content><author><name></name></author><summary type="html">Question : Let’s suppose that you are given an input string that might contain characters that are repeated. Can you design an algorithm that scans the input and removes any consecutively repeated characters and returns the trimmed string. It’s easier to describe this with an example :- ``` inpString = “aabbcc” outString = “abc”</summary></entry></feed>
+
+# printing the input and output
+print(&quot;Input string  : &quot; + inpstr)
+print(&quot;Output string : &quot; + &quot;&quot;.join(outStr))
+```
+
+Do let me know if you have a simpler solution!</content><author><name></name></author><category term="strings" /><summary type="html">Question : Let’s suppose that you are given an input string that might contain characters that are repeated. Can you design an algorithm that scans the input and removes any consecutively repeated characters and returns the trimmed string. It’s easier to describe this with an example :- ``` inpString = “aabbcc” outString = “abc”</summary></entry></feed>

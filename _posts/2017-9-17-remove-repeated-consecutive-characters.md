@@ -2,7 +2,7 @@
 layout: post
 title:  "Remove consecutive repeating characters in a string"
 date:   2017-09-17 12:58:27 -0400
-categories: strings
+category: strings
 ---
 
 Question : Let's suppose that you are given an input string that might contain characters that are repeated. Can you design an algorithm that scans the input and removes any consecutively repeated characters and returns the trimmed string. It's easier to describe this with an example :-
