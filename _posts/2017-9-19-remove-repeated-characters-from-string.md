@@ -6,7 +6,8 @@ category: strings
 ---
 
 Question : Let's suppose that you are given an input string that might contain characters that are repeated. Can you design an algorithm that scans the input and removes any repeated characters and returns the trimmed string. In this case, you don't have to worry whether the characters are repeated consecutively or not. Here is an example :-
-```
+
+```python
 inpString = "my name is unique to me"
 outString = "my naeisuqto" // this preserves the order
 outString = "a eimonqsuty" // this does not preserve the order
