@@ -65,7 +65,9 @@ print("Output string : " + "".join(tempSet))
 
 And here is a quick way to do this if we don't have to preserve the order. The idea is to create two sets populated with the input string and then find the intersection of these two sets. This will give us only the unique elements -- right?
 
-```
+```python
+# don't preserve the order
+
 inpString = "my name is unique to me"
 print("".join(set(inpString) & set(inpString)))
 ```

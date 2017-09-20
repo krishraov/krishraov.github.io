@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.5.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2017-09-20T08:40:52-04:00</updated><id>http://localhost:4000/</id><title type="html">Coding Problems</title><subtitle>Preparing for coding/programming interviews</subtitle><entry><title type="html">Remove repeated characters from a string</title><link href="http://localhost:4000/remove-repeated-characters-from-string/" rel="alternate" type="text/html" title="Remove repeated characters from a string" /><published>2017-09-19T04:00:00-04:00</published><updated>2017-09-19T04:00:00-04:00</updated><id>http://localhost:4000/remove-repeated-characters-from-string</id><content type="html" xml:base="http://localhost:4000/remove-repeated-characters-from-string/">Question : Let's suppose that you are given an input string that might contain characters that are repeated. Can you design an algorithm that scans the input and removes any repeated characters and returns the trimmed string. In this case, you don't have to worry whether the characters are repeated consecutively or not. Here is an example :-
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.5.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2017-09-20T08:49:10-04:00</updated><id>http://localhost:4000/</id><title type="html">Coding Problems</title><subtitle>Preparing for coding/programming interviews</subtitle><entry><title type="html">Remove repeated characters from a string</title><link href="http://localhost:4000/remove-repeated-characters-from-string/" rel="alternate" type="text/html" title="Remove repeated characters from a string" /><published>2017-09-19T04:00:00-04:00</published><updated>2017-09-19T04:00:00-04:00</updated><id>http://localhost:4000/remove-repeated-characters-from-string</id><content type="html" xml:base="http://localhost:4000/remove-repeated-characters-from-string/">Question : Let's suppose that you are given an input string that might contain characters that are repeated. Can you design an algorithm that scans the input and removes any repeated characters and returns the trimmed string. In this case, you don't have to worry whether the characters are repeated consecutively or not. Here is an example :-
 
 ```python
 inpString = &quot;my name is unique to me&quot;
@@ -58,7 +58,9 @@ print(&quot;Output string : &quot; + &quot;&quot;.join(tempSet))
 
 And here is a quick way to do this if we don't have to preserve the order. The idea is to create two sets populated with the input string and then find the intersection of these two sets. This will give us only the unique elements -- right?
 
-```
+```python
+# don't preserve the order
+
 inpString = &quot;my name is unique to me&quot;
 print(&quot;&quot;.join(set(inpString) &amp; set(inpString)))
 ```
